@@ -1,21 +1,22 @@
-Function.prototype.myCall = function () {
-  const args = Array.prototype.slice.call(arguments)
-  //this的值
-  const t = args.shift()
-  const self = this
-  t.fn = self
-  const res = t.fn(...args)
-  delete t.fn
-  return res
+Function.prototype.myCall = function (thisArgs, ...args) {
+  //获取需要被执行的函数
+  var fn = this
+  thisArgs = thisArgs ? Object(thisArgs) : window
+  thisArgs.fn = fn
+  var result = thisArgs.fn(...args)
+  delete thisArgs.fn
+  return result
 }
 
-function fn(a, b) {
-  console.log(a)
-  console.log(b)
-  console.log(this)
-
-  return 'okok'
+function foo() {
+  console.log('foo函数被执行了', this)
 }
 
-const res = fn.myCall({ x: 1 }, 20, 12)
-console.log(res)
+function sum(num1, num2) {
+  console.log('sum函数被执行了', this, num1, num2)
+  return num1 + num2
+}
+
+//foo.call('试试看')
+const sumResult = sum.myCall('aaa', 22, 1)
+console.log(sumResult)
