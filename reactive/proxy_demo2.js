@@ -24,3 +24,6 @@ console.log(objProxy.age)
 
 objProxy.name = 'neymar'
 objProxy.age = 18
+
+//in操作符
+console.log('name' in objProxy)
