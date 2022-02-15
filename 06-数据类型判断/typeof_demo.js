@@ -1,0 +1,13 @@
+console.log(typeof 123) // 'number'
+console.log(typeof '1111') // 'string'
+console.log(typeof true) // 'boolean'
+console.log(typeof Symbol(111)) // 'symbol'
+console.log(typeof undefined) // 'undefined'
+
+console.log(typeof []) // 'object'
+console.log(typeof {}) // 'object'
+console.log(typeof function () {}) // 'function'
+console.log(typeof null) // 'object'
+console.log(typeof new Date()) // 'object'
+console.log(typeof /\d/g) // 'object'
+console.log(typeof new Error()) // 'object'
