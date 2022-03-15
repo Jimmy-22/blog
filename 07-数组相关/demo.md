@@ -1,4 +1,6 @@
-### 1.计数排序的逻辑（只能正整数）
+### 数组去重的几种方法
+
+#### 1.计数排序的逻辑（只能正整数）
 ```js
 const a = [6, 3, 4, 5, 3, 4]
 const hasTab = {}
@@ -11,7 +13,7 @@ const res1 = Object.keys(hasTab).map((s) => parseInt(s, 10))
 console.log(res1)
 ```
 
-### 2. Set去重
+#### 2. Set去重
 ```js
 const b = [6, 3, 4, 5, 3, 4]
 const res2 = Array.from(new Set(b))
@@ -20,7 +22,7 @@ console.log(res2)
 console.log(res3)
 ```
 
-### 3. WeakMap任意类型去重
+#### 3. WeakMap任意类型去重
 
 
 ### 如何通过JS判断一个数组
