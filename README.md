@@ -1,13 +1,10 @@
 # JavaScript
+# Vue2/Vue3
+# Webpeck/Vite
+# TypeScript
+# React/React Native
+# Jest/Vitest
+# Uniapp/Taro
+# Nodejs
 
-**01 手写 call 函数**
 
-**02 冒泡排序**
-
-**03 vue 响应式原理**
-
-**04 new 一个函数发生了什么？**
-
-**06 JS 数据类型判断的几种方法**
-
-**07 如何实现数组去重**
