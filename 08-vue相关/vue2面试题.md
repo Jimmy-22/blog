@@ -1,8 +1,3 @@
-### computed 和 watch 的区别
-
-1. computed 用于计算产生新的数据，watch 用于监听现有数据
-2. computed 有缓存(依赖的不变，就不会重新计算),method 无缓存
-
 ### vue2 的组件通信方式有哪些？
 
 1. 父子组件：使用 props 和事件进行通信
