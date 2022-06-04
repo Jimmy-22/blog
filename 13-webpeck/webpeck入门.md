@@ -22,14 +22,13 @@ webpeck is a static module bundler for modern JavaScript applications
 
 - 在开发Vue、React项目中可能需要一些特殊的配置：比如给某些目录结构起别名，让项目支持sass、less等预处理器，希望在项目中手动添加Typescript支持，都需要配置webpeck
 - 希望在原有脚手架上来定制特殊配置提供性能。比如安装性能分析工具，使用gzip压缩代码，引用cdn资源，公共代码抽取等操作，甚至需要编写属于自己的loader和plugin等
-- 
 
 webpeck的**安装**分为2个：` webpeck`、`webpeck-cli`，它们之间的关系？
 
 - 执行webpeck命令，会执行`node_module`下`.bin`目录下的webpeck
-- `webpeck`在执行时是依赖`webpeck-cli`的，如果没有安装就会报错
-- 而`webpeck-cli`中执行代码时，才是真正利用`webpeck`进行编译和打包的过程
--  所以安装`webpeck`的同时，要安装`webpeck-cli`。而第三方脚手架事实上是没有使用`webpeck-cli`的，而是类似于`vue-service-cli`的东西
+- webpeck在执行时是依赖webpeck-cli的，如果没有安装就会报错
+- 而webpeck-cli中执行代码时，才是真正利用webpeck进行编译和打包的过程
+- 所以安装webpeck的同时，要安装webpeck-cli。而第三方脚手架事实上是没有使用webpeck-cli的，而是类似于`vue-service-cli`的东西
 
 
 
