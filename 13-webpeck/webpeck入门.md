@@ -26,19 +26,19 @@ webpeck is a static module bundler for modern JavaScript applications
 webpeck的**安装**分为2个：` webpeck`、`webpeck-cli`，它们之间的关系？
 
 - 执行webpeck命令，会执行`node_module`下`.bin`目录下的webpeck
+
 - webpeck在执行时是依赖webpeck-cli的，如果没有安装就会报错
+
 - 而webpeck-cli中执行代码时，才是真正利用webpeck进行编译和打包的过程
+
 - 所以安装webpeck的同时，要安装webpeck-cli。而第三方脚手架事实上是没有使用webpeck-cli的，而是类似于`vue-service-cli`的东西
 
+  
+
+- `ES6 Module`是静态引入，编译时引入；`Commonjs`是动态引入，执行时引入
+- 只有ES6 Module才能静态分析，实现Tree-Shaking
 
 
 
 
-
-
-
-
-
-
-### 
 
