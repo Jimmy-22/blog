@@ -6,10 +6,10 @@
 function unique(arr) {
   /* your code */
 }
-let strings = ["Hare", "Krishna", "Hare", "Krishna",
+let arr = ["Hare", "Krishna", "Hare", "Krishna",
   "Krishna", "Krishna", "Hare", "Hare", ":-O"
-];
-console.log( unique(strings) ); // ['Hare', 'Krishna', ':-O']
+]
+console.log(unique(arr)) // ['Hare', 'Krishna', ':-O']
 ```
 
 #### 1. Set
