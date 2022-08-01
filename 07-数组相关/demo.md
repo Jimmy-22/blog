@@ -21,8 +21,31 @@ const res3 = [...new Set(b)]
 console.log(res2)
 console.log(res3)
 ```
+#### 3. 遍历检查
+```js
+function unique(arr) {
+  /* your code */
+}
+let strings = ["Hare", "Krishna", "Hare", "Krishna",
+  "Krishna", "Krishna", "Hare", "Hare", ":-O"
+];
+console.log( unique(strings) ); // ['Hare', 'Krishna', ':-O']
+```
+解决方案：
+```js
+function unique(arr) {
+  let result = []
+  for (let str of arr) {
+    if (!result.includes(str)) {
+      result.push(str)
+    }
+  }
+  return result
+}
+```
+代码有效，但其中存在潜在的性能问题。如果 arr.length 是 10000，我们会有 10000 * 10000 = 1 亿次的比较。所以该解决方案仅适用于小型数组。
 
-#### 3. WeakMap任意类型去重
+#### 4. WeakMap任意类型去重
 
 
 ### 如何通过JS判断一个数组
