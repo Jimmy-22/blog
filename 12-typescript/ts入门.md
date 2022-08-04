@@ -32,8 +32,6 @@
 3. 范围不同：type适用于基本类型，interface一般不行
 4. 命名方式：interface会创建新的类型名，type只是创建类型别名
 
-# TypeScript 基本知识梳理
-
 ## TypeScript vs JavaScript
 
 TypeScript 是 "强类型" 版的 JavaScript，当我们在代码中定义变量(包括普通变量、函数、组件、hook等)的时候，TypeScript 允许我们在定义的同时指定其类型，这样使用者在使用不当的时候就会被及时报错提醒
