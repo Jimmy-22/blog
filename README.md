@@ -1,17 +1,13 @@
-- **JavaScript**
-
-- **Vue2/Vue3**
+- **Vue2/Vue3/React**
 
 - **Webpeck/Vite**
 
 - **TypeScript**
 
-- **React/React Native**
-
 - **Jest/Vitest**
 
 - **Uniapp/Taro**
 
-- **Nodejs**
+- **Nodejs/SSR**
 
 
