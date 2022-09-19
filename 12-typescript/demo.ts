@@ -134,3 +134,81 @@ function createDateFromNumber(n: number): Date {
 function createDateFromYMD(y: number, m: number, d: number): Date{
     return new Date(y, m, d)
 }
+
+type Person = {
+    name: string 
+}
+
+function f (this: Person, n: number) {
+     console.log(n)
+}
+
+// f(1)
+
+const p: Person & {f: typeof f} = {name: 'messi', f: f}
+p.f(1)
+
+const p2: Person = {name: 'messi'}
+f.call(p2, 1)
+
+function ff(a: number, b:number, c:number) {
+    console.log(a + b + c)
+}
+
+const ff2 = ff.bind(null) // null -> this
+const ff3 =  ff2.bind(null, 1)
+const ff4 = ff3.bind(null, 2)
+const ff5 = ff4.bind(null, 3)
+
+console.log(ff5())
+
+function fff(y: string, ...x: number[]) {
+    console.log(x)
+}
+
+// 剩余参数
+// as const
+// 参数对象析构
+
+type Configs = {
+    method: 'GET' | 'POST',
+    data?: unknown,
+    query?: {}
+}
+ 
+function test ({method, data, ...rest}: Configs = {method: 'GET'}) {
+    console.log(method)
+    console.log(data)
+}
+
+// void 返回值
+function ftest(): void{
+    // return null 不行
+}
+
+// 函数的本质：推后执行的、部分待定的代码
+// 如果没有泛型，有些奇怪的需求就无法满足。没有泛型的类型系统，就如同没有函数的编程语言
+
+interface Hash<V = string> {
+    [key: string]: V
+}
+
+// 带入法
+type X = Hash<string>
+
+// 包含于 
+type Person2 = {name: string}
+type LikeString<T> = T extends string ? true : false 
+type LikeNumber<T> = T extends number ? 1 : 2
+type LikePerson<T> = T extends Person ? 'ok' : 'no_ok'
+
+type R1 = LikeString<'hi'> // true
+type R2 = LikeString<true> // false
+type S1 = LikeNumber<222> // 1
+type S2 = LikeNumber<true> // 2
+type T1 = LikePerson<{name: 'messi', age: 35}> // ok
+type T2 = LikePerson<{xxx: 1}> // no_ok
+type X1 = LikeString<never> // never
+// 若T为联合类型，则分开计算
+type ToArray<T> = T extends unknown ? T[] : never
+type Result = ToArray<string | number>  // string[] | number[]
