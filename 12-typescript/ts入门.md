@@ -17,12 +17,62 @@
 
 ### TS和JS的区别是什么？有什么优势？
 
-1. 语法层面：Typescript = JavaScript + Type
+1. 语法层面：Typescript = JavaScript + Type(TS是JS的超集)
 2. 执行环境层面： 浏览器、Node.js可以直接执行JS，但不能执行TS(Deno可以执行TS)
-3. 编译层面：TS有编译阶段，JS没有编译阶段（只有转译阶段和lint阶段）
+3. 编译层面：TS有编译阶段，JS没有编译阶段(只有转译阶段和lint阶段)
 4. 编写层面：TS更难写一点，但是类型更安全
 5. 文档层面：TS的代码写出来就是文档，IDE可以完美提示。JS的提示主要靠TS
 
+### any/unknow/never的区别是什么？
+
+any V.S unknow
+二者都是顶级类型(top type)，任何类型的值都可以赋值给顶级类型变量：
+
+```tsx
+let foo: any = 123; // 不报错
+let bar: unknown = 123; // 不报错
+```
+
+但是 unknown 比 any 的类型检查更严格，any 什么检查都不做，unknown 要求先收窄类型：
+
+```tsx
+const value: unknow = 'Hi'
+const someString: string = value
+// 报错：Type 'unknown' is not assignable to type 'string'.(2322)
+```
+```tsx
+const value: unknow = 'Hi'
+const someString = value as string // 不报错
+```
+
+如果改成 any，基本在哪都不报错。所以能用 unknown 就优先用 unknown，类型更安全一点
+
+never是底类型，表示不应该出现的类型
+
+```ts
+interface A {
+   type: 'a'
+}
+interface B {
+   type: 'b'
+}
+type All = A | B
+
+function handleValue(val: All) {
+   switch (val.type) {
+      case 'a':
+        // 这里 val 被收窄为 A
+        break
+      case 'b': 
+        // val 在这里是 B 
+        break 
+      default: 
+        // val 在这里是 never 
+        const exhaustiveCheck: never = val 
+        break
+   }
+}
+```
 
 
 ### type和interface的区别是什么？
