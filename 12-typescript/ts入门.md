@@ -103,11 +103,9 @@ export const SearchPanel = ({users, param, setParam}: SearchPanelProps) => {}
 
 ## TypeScript 的类型
 
-在本节中我们使用到了8种类型： number, string, boolean, 函数, array, any, void, object
+各种类型： number, string, boolean, 函数, array, any, void, object
 
-这一节我们接触到了平常使用中会接触到的大部分的类型，下面我们挨个梳理一遍：
-
-### 1. number
+### number
 
 数字类型，包含小数、其他进制的数字：
 
@@ -119,7 +117,7 @@ let octal: number = 0o744;
 let big: bigint = 100n;
 ```
 
-### 2. string
+### string
 
 字符串
 
@@ -127,7 +125,7 @@ let big: bigint = 100n;
 let color: string = "blue";
 ```
 
-### 3. array
+### array
 
 在 TS 中，array 一般指**所有元素类型相同**的值的集合，比如：
 
@@ -152,7 +150,7 @@ let l = ['jack', 10]
 
 在 TS 中不是 数组/array，它们叫作 tuple，下面会提到
 
-### 4. boolean
+### boolean
 
 布尔值
 
@@ -160,56 +158,7 @@ let l = ['jack', 10]
 let isDone: boolean = false;
 ```
 
-### 5. 函数
-
-两种方法
-
-1. 在我们熟悉的 "JS函数" 上直接声明参数和返回值：
-
-```jsx
-/**
- * 这是我们上节课写的代码，大家可能发现了
- * 我在这里做了一些修改，在箭头前边加上了 :boolean
- * 但是在我们上节课的代码中是没有这个:boolean 的，
- * 之所以不需要加是因为 类型推断，这个我们在下面会讲
- * @param value
- */
-const isFalsy = (value: any): boolean => { 
-  return value === 0 ? true : !!value; 
-}; 
-```
-
-2. 直接声明你想要的函数类型：
-
-```jsx
-/**
- * 上节课写的 useMount 和 isFalsy
- */
-export const useMount = (fn: () => void) => {
-  useEffect(() => {
-    fn();
-  }, []);
-};
-
-const isFalsy: (value: any) => boolean = (value) => {
-  return value === 0 ? true : !!value;
-};
-```
-
-### 6. any
-
-any 表示这个值可以是任何值，被定义为 any 就意味着不做任何类型检查
-
-```jsx
-let looselyTyped: any = 4;
-// looselyTyped 的值明明是个4，哪里来的ifItExists方法呢？
-// 由于声明为any，我们没法在静态检查阶段发现这个错误
-looselyTyped.ifItExists();
-```
-
-初学 TS 的同学经常会为了让TS不再报错就用了很多any，这样做会失去TS的保护。同学们应该尽量避免使用any
-
-### 7. void
+### void
 
 绝大部分情况下，只会用在这一个地方：表示函数不返回任何值或者返回undefined (因为函数不返回任何值的时候 === 返回 undefined)
 
@@ -224,15 +173,11 @@ export const useMount = (fn: () => void) => {
 };
 ```
 
-### 8. object
+### object
 
 除了 number, string, boolean, bigint, symbol, null, or undefined，其他都是 object
 
-下面是我们还没有接触到的 TS 类型
-
-### 9. tuple
-
-其实这个大家已经见过了，这是没有给大家指出来
+### tuple
 
 这就是一个典型的 tuple
 
@@ -240,7 +185,7 @@ export const useMount = (fn: () => void) => {
 const [users, setUsers] = useState([])
 ```
 
-tuple 是 "数量固定，类型可以各异" 版的数组
+tuple 是"数量固定，类型可以各异" 版的数组
 
 在 React 中有可能使用 tuple 的地方就是 custom hook 的返回值，注意 isHappy → tomIsHappy 以及其他名字的变化，这里使用tuple的好处就显现出来了：便于使用者重命名
 
@@ -256,7 +201,7 @@ const SomeComponent = () => {
 }
 ```
 
-### 10. enum
+### enum
 
 ```jsx
 enum Color {
@@ -267,7 +212,7 @@ enum Color {
 let c: Color = Color.Green;
 ```
 
-### 11. null 和 undefined
+### null 和 undefined
 
 null 和 undefined 在 TypeScript 中既是一个值，也是一个类型：
 
@@ -276,27 +221,7 @@ let u: undefined = undefined;
 let n: null = null;
 ```
 
-### 12. unknown
-
-unknown 表示这个值可以是任何值
-
-❓❓❓❓❓❓
-
-这句话怎么这么熟悉，刚才是不是用来形容 any 的？
-
-unknown 的用法：在你想用 any 的时候，用 unknown 来代替，简单来说，unknown是一个"严格"版的 any
-
-```jsx
-
-const isFalsy = (value: unknown) => { 
- // 大家不用考虑这段console有啥意义，把它打在你的代码里对应的位置，观察编辑器会不会报错；
- // 再思考它应不应该报错
-  console.log(value.mayNotExist)
-  return value === 0 ? true : !!value; 
-}; 
-```
-
-### 13. never
+### never
 
 ```jsx
 // 这个 func返回的就是never类型，用到比较少，在类型操作等场景会用到
@@ -305,20 +230,9 @@ const func = () => {
 }
 ```
 
-### interface
+## 什么时候需要声明类型？
 
-interface 不是一种类型，应该被翻译成 接口，或者说使用上面介绍的类型，创建一个我们自己的类型
-
-```jsx
-interface User {
-  id: number;
-}
-const u: User = {id: 1}
-```
-
-## 啥时候需要声明类型
-
-理论上来说在我们声明任何变量的时候都需要声明类型(包括普通变量、函数、组件、hook等等)，声明 函数、组件、hook 等需要声明参数 和 返回值的类型。
+理论上来说在声明任何变量的时候都需要声明类型(包括普通变量、函数、组件、hook等等)，声明函数、组件、hook等需要声明参数和返回值的类型。
 
 但是在很多情况下，TS可以帮我们自动推断，我们就不用声明了，比如：
 
