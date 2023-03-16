@@ -36,7 +36,7 @@ export default function timer() {
 }
 ```
 
-使用useRef保存的数据一般是和UI渲染无关的，因此当ref的值发生变化时，不会触发组件重新渲染。useRef还有一个重要功能，就是保存某个DOM节点的引用。比如，你需要在点击某个按钮时让某个输入框获得焦点：
+使用useRef保存的数据一般是和UI渲染无关的，因此当ref的值发生变化，不会触发组件重新渲染。useRef还有一个重要功能，就是保存某个DOM节点的引用。比如，你需要在点击某个按钮时让某个输入框获得焦点：
 ```jsx
 function TextInputWithFocusButton() {
     const inputEl = useRef(null)
